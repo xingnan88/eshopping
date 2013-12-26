@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="GBK" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.i18.encoding" value="UTF-8"/>
+	<constant name="struts.custom.i18n.resources" value="messageResource"/>
+	
+	<package name="head" extends="struts-default" namespace="/head">
+	    <action name="index" class="typesAction" >
+			<result name="success">index.jsp</result>
+			<result name="exit" type="redirect">index.action</result>
+		</action>
+		<action name="login" class="loginAction">
+			<result name="error">index.jsp</result>
+			<result name="modify">member/modifyPwd.jsp</result>
+			<result name="modifyaddress">member/modifyAddress.jsp</result>
+			<result name="regist">registSucc.jsp</result>
+			<result name="input">member/modifyPwd.jsp</result>
+		</action>
+		<action name="merchantable" class="merchantableAction">
+			<result name="success">showByType.jsp</result>
+			<result name="showone">showById.jsp</result>
+			<result name="research">result.jsp</result>
+		</action>
+		<action name="eval" class="evalAction">
+			<result name="success">showById.jsp</result>
+		</action>
+		<action name="*">
+			<result>{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="headmember" extends="struts-default" namespace="/head/member">
+		<action name="mycart" class="cartAction">
+			<result name="error">/head/login.jsp</result>
+			<result name="success">mycart.jsp</result>
+		</action>
+		<action name="order" class="orderAction">
+			<result name="success">account.jsp</result>
+			<result name="finished">finish.jsp</result>
+			<result name="history">historyOrder.jsp</result>
+			<result name="modify">modifyOrder.jsp</result>
+			<result name="delete">modifyOrder.jsp</result>
+		</action>
+		<action name="*">
+			<result>{1}.jsp</result>
+		</action>
+	</package>
+	
+	<package name="json" extends="json-default" namespace="/head">
+		<action name="cartJson" class="cartJsonAction">
+			<result type="json"/>
+		</action>
+		<action name="evalJson" class="evaluateJsonAction">
+			<result type="json"/>
+		</action>
+		<action name="addEvalJson" class="evaluateJsonAction" method="add">
+			<result type="json"/>
+		</action>
+		<action name="loginJson" class="loginJsonAction">
+			<result type="json"/>
+		</action>
+	</package>
+	
+	<package name="back" extends="struts-default" namespace="/back">
+		<action name="login" class="adminAction">
+			<result name="success">jsp/index.jsp</result>
+			<result name="error">login.jsp</result>
+			<result name="input">login.jsp</result>
+		</action>
+		<action name="*">
+			<result>{1}.jsp</result>
+		</action>
+	</package>
+	<package name="back2" extends="struts-default" namespace="/back/jsp">
+		<action name="mer" class="merchantableAction">
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">
+					image/bmp,image/png,image/gif,image/jpeg
+				</param>
+				<param name="maximumSize">30000</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"/>
+			<param name="savePath">/image</param>
+			<result name="success">merInfo.jsp</result>
+			<result name="save">saveMerInfo.jsp</result>
+			<result name="delete" type="redirect">mer!showAllMer?page=1</result>
+			<result name="go">modifyMer.jsp</result>
+			<result name="update">modifyResult.jsp</result>
+			<result name="input">uploadError.jsp</result>
+		</action>
+		<action name="*Type" class="typesAction">
+			<result name="go">{1}.jsp</result>
+			<result name="delete">typeInfo.jsp</result>
+			<result name="add">typeInfo.jsp</result>
+			<result name="update">typeInfo.jsp</result>
+		</action>
+		<action name="orders" class="orderAction">
+			<result name="success">orderInfo.jsp</result>
+			<result name="submit">orderInfo.jsp</result>
+		</action>
+		<action name="mem" class="loginAction">
+			<result name="success">memInfo.jsp</result>
+			<result name="del">memInfo.jsp</result>
+		</action>
+		<action name="admin" class="adminAction">
+			<result name="success">adminInfo.jsp</result>
+			<result name="save">adminInfo.jsp</result>
+			<result name="update">modifyAdminResult.jsp</result>
+			<result name="modifyPwd">modifyPwd.jsp</result>
+			<result name="exit" type="redirect">/back/login.jsp</result>
+			<result name="input">/back/login.jsp</result>
+		</action>
+		<action name="*">
+			<result>{1}.jsp</result>
+		</action>
+	</package>
+</struts>    

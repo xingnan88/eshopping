@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- 指定Spring配置文件的DTD信息 -->
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN"
+	"http://www.springframework.org/dtd/spring-beans-2.0.dtd">
+<beans>
+	<bean id="template" abstract="true" lazy-init="true">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="adminDAO" class="com.eshop.dao.impl.AdminDAOImpl" parent="template"/>
+	<bean id="cartDAO" class="com.eshop.dao.impl.CartDAOImpl" parent="template"/>
+	<bean id="evaluateDAO" class="com.eshop.dao.impl.EvaluateDAOImpl" parent="template"/>
+	<bean id="memberDAO" class="com.eshop.dao.impl.MemberDAOImpl" parent="template"/>
+	<bean id="merchantableDAO" class="com.eshop.dao.impl.MerchantableDAOImpl" parent="template"/>
+	<bean id="ordersDAO" class="com.eshop.dao.impl.OrdersDAOImpl" parent="template"/>
+	<bean id="recordDAO" class="com.eshop.dao.impl.RecordDAOImpl" parent="template"/>
+	<bean id="typesDAO" class="com.eshop.dao.impl.TypesDAOImpl" parent="template"/>
+	<bean id="pageDAO" class="com.eshop.dao.impl.PageImplDao" parent="template"/>
+</beans>

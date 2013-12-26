@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/applicationContext.xml,
+					/WEB-INF/classes/daoContext.xml</param-value>
+	</context-param>
+	<listener>
+		<listener-class>com.eshop.listener.LogListener</listener-class>
+	</listener>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<filter>
+		<filter-name>hibernateFilter</filter-name>
+		<filter-class>
+			org.springframework.orm.hibernate3.support.OpenSessionInViewFilter</filter-class>
+	</filter>
+	<!-- struts过滤器 -->
+	<filter>
+		<filter-name>struts2</filter-name>
+		<filter-class>
+			org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+	</filter>
+	<!-- 权限过滤器 -->
+	<filter>
+		<filter-name>back</filter-name>
+		<filter-class>com.eshop.filter.BackFilter</filter-class>
+	</filter>
+	<filter>
+		<filter-name>head</filter-name>
+		<filter-class>com.eshop.filter.HeadFilter</filter-class>
+	</filter>
+
+	<filter-mapping>
+		<filter-name>back</filter-name>
+		<url-pattern>/back/jsp/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>head</filter-name>
+		<url-pattern>/head/member/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>hibernateFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>struts2</filter-name>
+		<url-pattern>/*</url-pattern> <!-- 若此处为/*.action下面的图片显示不出来 -->
+	</filter-mapping>
+
+	<!-- 配置Struts2的CleanUp的Filter -->
+	<filter>
+		<filter-name>struts-cleanup</filter-name>
+		<filter-class>org.apache.struts2.dispatcher.ActionContextCleanUp</filter-class>
+	</filter>
+	<!-- 定义Struts2的CleanUp Filter拦截的URL -->
+	<filter-mapping>
+		<filter-name>struts-cleanup</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	
+	<!-- 定义图形验证码Servlet -->
+	<servlet>
+		<servlet-name>img</servlet-name>
+		<servlet-class>com.eshop.tool.AuthImg</servlet-class>
+	</servlet>
+	<!-- 为图形验证码Servlet配置URL -->
+	<servlet-mapping>
+		<servlet-name>img</servlet-name>
+		<url-pattern>/head/authImg.jsp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>img</servlet-name>
+		<url-pattern>/back/authImg.jsp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>img</servlet-name>
+		<url-pattern>/back/jsp/authImg.jsp</url-pattern>
+	</servlet-mapping>
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

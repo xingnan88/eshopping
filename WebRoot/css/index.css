@@ -1,0 +1,23 @@
+.title {
+	padding-top: 10px;
+	height: 38px;
+	background-image:url(../img/8.jpg);
+}
+
+.subtitle {
+	padding:5px 0px 0px 10px;
+	text-align: left;
+	height:25px;
+}
+
+.mer {
+	padding-top: 10px;
+	float:left;
+	width:145px;
+}
+.tdd{
+	padding:10px 0px 0px 5px;	
+}
+.errorMessage{
+	color:red;
+	}

@@ -1,0 +1,357 @@
+body{ margin:0px;font-size:12px;background-color:#ffffff;font-family: arial;width:100%;}
+ul,img,th,table,div{
+margin:0px;
+padding:0px;
+list-style:none;
+}
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none
+}
+
+.A1:link {
+	COLOR: #215DC6; TEXT-DECORATION: none;font-weight:bold;font-size:12px;
+}
+.A1:visited {
+	COLOR: #215DC6; TEXT-DECORATION: none;font-weight:bold;font-size:12px;
+}
+.A1:hover {
+	COLOR: #ff0000; TEXT-DECORATION: none;;font-weight:bold;font-size:12px;
+}
+
+#top{
+float:left;
+width:100%;
+height:52px;
+line-height:52px;
+background-image:url(../images/login_02.jpg);
+background-repeat:repeat-x;
+text-align:center;
+}
+
+.topTable{
+float:left;
+width:100%;
+height:52px;
+line-height:52px;
+background-image:url(../images/login_02.jpg);
+background-repeat:repeat-x;
+text-align:center;
+}
+
+.f2{
+color:#EDE7E7;
+font-size:12px;
+font-family:arial;
+text-align:right;	
+}
+
+#center{
+float:left;
+width:100%;
+}
+
+#left{
+float:left;
+width:181px;
+margin-top:0px;
+background-image:url(../images/login_05.jpg);
+background-repeat:repeat-y;
+margin-top:0px;
+}
+#left #top1{
+margin:left;
+margin-left:20px;
+width:80%;
+line-height:22px;
+margin-top:10px;
+}
+#left #top1 ul li{
+font-size: 12px;
+}
+#left #menu{
+margin-left:10px;
+margin:left;
+width:154px;
+}
+#left #menu #menu_top{
+margin:auto;
+width:154px;
+height:22px;
+margin-top:4px;
+line-height:22px;
+text-align:center;
+color:#ffffff;
+font-weight:bold;
+background-image:url(../images/login_13.jpg);
+background-repeat:no-repeat;
+}
+#left #menu #neir{
+width:154px;
+margin:auto;
+
+}
+#left #menu #neir ul{
+margin:auto;
+width:154px;
+}
+#left #menu #neir ul li{
+width:154px;
+height:22px;
+line-height:22px;
+background-image:url(../images/login_19.jpg);
+background-repeat:no-repeat;
+text-align:center;
+margin-top:4px;
+}
+
+
+#left #bottom{
+float:left;
+width:181px;
+height:29px;
+margin-top:50px;
+background-image:url(../images/login_25.jpg);
+background-repeat:no-repeat;
+}
+
+.bg_table{  /*中间表格样式*/
+width:785px;
+line-height:25px;
+background-color:#ECF5FF;
+margin-top:20px;
+text-align:left;
+margin-left:7px;
+font-size: 12px;
+}
+.table_bottom{
+width:96%;
+line-height:25px;
+margin-top:20px;
+text-align:center;
+margin-left:10px;
+}
+
+.tdys{			
+border:#A4B6D7 1px solid;
+text-align:center;
+}
+.td1{			
+border-left:#A4B6D7 1px solid;
+border-bottom:#A4B6D7 1px solid;
+border-right:#A4B6D7 1px solid;
+padding-left:5px;
+
+}
+.ttd1{			
+border-left:#A4B6D7 1px solid;
+border-bottom:#A4B6D7 1px solid;
+border-right:#A4B6D7 1px solid;
+padding-left:5px;
+width:30%;
+
+}
+
+.td2{			
+border-bottom:#A4B6D7 1px solid;
+border-right:#A4B6D7 1px solid;
+padding-left:5px;
+
+}
+
+.td11{			
+border-left:#A4B6D7 1px solid;
+border-bottom:#A4B6D7 1px solid;
+border-right:#A4B6D7 1px solid;
+padding-left:5px;
+background-color:#ffffff;
+}
+
+.td21{			
+border-bottom:#A4B6D7 1px solid;
+border-right:#A4B6D7 1px solid;
+padding-left:5px;
+background-color:#ffffff;
+}
+.ttd21{			
+border-bottom:#A4B6D7 1px solid;
+border-right:0px;
+padding-left:5px;
+background-color:#ffffff;
+text-align:right;
+width:40%;
+}
+.ttd22{			
+border-bottom:#A4B6D7 1px solid;
+border-right:#A4B6D7 1px solid;
+padding-left:5px;
+background-color:#ffffff;
+text-align:left;
+width:30%;
+}
+.style1 {color: #800000}
+.style2{color: #800000;font-weight:bold;}
+
+/* 11.26树型菜单样式 */
+#nav { width:154px; line-height: 22px; list-style-type: none; text-align:center; font-size: 12px/*定义整个ul菜单的行高和背景色*/
+}
+/*==================一级目录===================*/
+#nav a { width: 154px; display: block; padding-left:0px; /*Width(一定要)，否则下面的Li会变形*/}
+#nav li a {margin-top:4px; background-image:url(../img/login_13.jpg);background-repeat:no-repeat;  }/*一级目录onMouseOver显示的背景色*/
+#nav li a:link { color:#fff; text-decoration:none;}
+#nav li a:visited { color:#fff; text-decoration:none; }
+#nav li a:hover { color:#fff; text-decoration:none;  }
+/*==================二级目录===================*/
+#nav li ul li a {background-image:url(../images/login_19.jpg);background-repeat:no-repeat; /*二级目录的背景色*/ font-weight:normal;}
+#nav li ul li a:link { color:#333; text-decoration:none; }
+#nav li ul li a:visited { color:#333; text-decoration:none; }
+#nav li ul li a:hover { color:#ff0000; text-decoration:none;  background-image:url(../img/login_19.jpg);background-repeat:no-repeat;/* 二级onmouseover的字体颜色、背景色*/
+}
+/*==============================*/
+#nav li:hover ul { left: auto; }
+#nav li.sfhover ul { left: auto; }
+#content { clear: left; }
+#nav ul.collapsed { display: none; }
+-->
+#PARENT { width:154px; }
+
+/* 11.27控制首页右侧管理样式 */
+.sy_table{
+width:500px;
+line-height:30px;
+margin-top:20px;
+text-align:left;
+margin-left:10px;
+font-size: 12px;
+}
+.sy_table2{
+width:730px;
+line-height:30px;
+margin-top:20px;
+text-align:left;
+font-size: 12px;
+margin-left:10px;
+}
+.sy_td1{
+border-left:#A4B6D7 1px solid;
+border-bottom:#A4B6D7 1px solid;
+padding-left:10px;
+background-color:#ECF5FF;
+text-align:right;
+font-size: 12px;
+}
+.sy_td2{
+border-right:#A4B6D7 1px solid;
+border-bottom:#A4B6D7 1px solid;
+padding-left:5px;
+background-color:#ECF5FF;
+font-size: 12px;
+}
+.sy_td3{
+border-left:#A4B6D7 1px solid;
+border-bottom:#A4B6D7 1px solid;
+padding-left:10px;
+text-align:right;
+font-size: 12px;
+}
+.sy_td4{
+border-right:#A4B6D7 1px solid;
+border-bottom:#A4B6D7 1px solid;
+padding-left:5px;
+font-size: 12px;
+}
+.biaokuang{
+width:320px;
+height:17px;
+background-color:#fff;
+border-top:#808080 2px solid;
+border-left:#808080 2px solid;
+border-bottom:#D4D0C8 1px solid;
+border-right:#D4D0C8 1px solid;
+}
+.duan_biaokuang{
+width:110px;
+height:17px;
+background-color:#fff;
+border-top:#808080 2px solid;
+border-left:#808080 2px solid;
+border-bottom:#D4D0C8 1px solid;
+border-right:#D4D0C8 1px solid;
+font-size: 12px;
+}
+
+.duan_1{
+width:150px;
+height:19px;
+background-color:#fff;
+border-top:#808080 2px solid;
+border-left:#808080 2px solid;
+border-bottom:#D4D0C8 1px solid;
+border-right:#D4D0C8 1px solid;
+}
+.duan_11{
+width:300px;
+height:17px;
+background-color:#fff;
+border-top:#808080 2px solid;
+border-left:#808080 2px solid;
+border-bottom:#D4D0C8 1px solid;
+border-right:#D4D0C8 1px solid;
+}
+.duan_2{
+width:180px;
+height:17px;
+background-color:#fff;
+border-top:#808080 2px solid;
+border-left:#808080 2px solid;
+border-bottom:#D4D0C8 1px solid;
+border-right:#D4D0C8 1px solid;
+}
+.duan_21{
+width:392px;
+height:17px;
+background-color:#fff;
+border-top:#808080 2px solid;
+border-left:#808080 2px solid;
+border-bottom:#D4D0C8 1px solid;
+border-right:#D4D0C8 1px solid;
+}
+
+
+.duan_3{
+width:80px;
+height:17px;
+background-color:#fff;
+border-top:#808080 2px solid;
+border-left:#808080 2px solid;
+border-bottom:#D4D0C8 1px solid;
+border-right:#D4D0C8 1px solid;
+}
+.duan_4{
+width:75px;
+height:17px;
+background-color:#fff;
+border-top:#808080 2px solid;
+border-left:#808080 2px solid;
+border-bottom:#D4D0C8 1px solid;
+border-right:#D4D0C8 1px solid;
+}
+.btn {
+BORDER-RIGHT: #BDC5CA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #BDC5CA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#FFFFFF, EndColorStr=#E6E6E6); BORDER-LEFT: #BDC5CA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #BDC5CA 1px solid
+}
+.btn1 {
+width:35px;BORDER-RIGHT: #BDC5CA 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: #BDC5CA 1px solid; PADDING-LEFT: 2px; FONT-SIZE: 12px; FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#FFFFFF, EndColorStr=#E6E6E6); BORDER-LEFT: #BDC5CA 1px solid; CURSOR: hand; COLOR: black; PADDING-TOP: 2px; BORDER-BOTTOM: #BDC5CA 1px solid
+}
+.wbqy{
+width:340px;
+height:60px;
+}
+
+.simpleTable{
+font-size: 12px;	
+}

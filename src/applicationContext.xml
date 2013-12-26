@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="GBK"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<!-- 指定连接数据库的驱动 -->
+		<property name="driverClass" value="com.mysql.jdbc.Driver"/>
+		<!-- 指定连接数据库的URL -->
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/db_eshop3?useUnicode=true&amp;characterEncoding=GBK"/>
+		<!-- 指定连接数据库的用户名 -->
+		<property name="user" value="root"/>
+		<!-- 指定连接数据库的密码 -->
+		<property name="password" value="714106749"/>
+		<!-- 指定连接数据库连接池的最大连接数 -->
+		<property name="maxPoolSize" value="40"/>
+		<!-- 指定连接数据库连接池的最小连接数 -->
+		<property name="minPoolSize" value="1"/>
+		<!-- 指定连接数据库连接池的初始化连接数 -->
+		<property name="initialPoolSize" value="1"/>
+		<!-- 指定连接数据库连接池的连接的最大空闲时间 -->
+		<property name="maxIdleTime" value="20"/>
+		<property name="idleConnectionTestPeriod" value="18000"/>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect</prop>
+				<!-- 是否根据需要每次自动创建数据库 -->
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+				<!-- 显示Hibernate持久化操作所生成的SQL -->
+				<prop key="hibernate.show_sql">true</prop> 
+				<!-- 将SQL脚本进行格式化后再输出 -->
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/eshop/bean/Admin.hbm.xml</value>
+				<value>com/eshop/bean/Cart.hbm.xml</value>
+				<value>com/eshop/bean/Evaluate.hbm.xml</value>
+				<value>com/eshop/bean/Member.hbm.xml</value>
+				<value>com/eshop/bean/Merchantable.hbm.xml</value>
+				<value>com/eshop/bean/Orders.hbm.xml</value>
+				<value>com/eshop/bean/Record.hbm.xml</value>
+				<value>com/eshop/bean/Types.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<!-- ****************事务管理 配置*************** -->
+	<bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!-- ****************配置切面Bean，指定事务管理器 -->
+	<tx:advice id="txAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+	<!-- 配置一个切入点匹配指定包下所有类 -->
+	<aop:config>
+		<aop:pointcut id="pointcut" expression="execution(* com.eshop.service.impl.*Impl.*(..))"/>
+		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
+	</aop:config>
+	
+	<!-- 引进daoContext.xml配置文件 -->
+	 <import resource="daoContext.xml"/>  
+	
+	<!--*****************Service************************ -->
+		<bean id="headService" class="com.eshop.service.impl.HeadServiceImpl">
+			<property name="typesDAO" ref="typesDAO"/>
+			<property name="merchantableDAO" ref="merchantableDAO"/>
+			<property name="cartDAO" ref="cartDAO"/>
+			<property name="evaluateDAO" ref="evaluateDAO"/>
+			<property name="ordersDAO" ref="ordersDAO"/>
+			<property name="recordDAO" ref="recordDAO"/>
+		</bean>
+		<bean id="userService" class="com.eshop.service.impl.UserServiceImpl">
+			<property name="memberDAO" ref="memberDAO"/>
+			<property name="cartDAO" ref="cartDAO"/>
+			<property name="adminDAO" ref="adminDAO"/>
+		</bean>
+		<bean id="pageService" class="com.eshop.service.impl.PageServiceImpl">
+			<property name="pageDAO" ref="pageDAO"/>
+		</bean>
+		
+	<!-- *****************Action*********************** -->
+		<bean id="typesAction" class="com.eshop.action.TypesAction" scope="prototype">
+			<property name="headService" ref="headService"/>
+		</bean>
+		
+		<bean id="merchantableAction" class="com.eshop.action.MerchantableAction" scope="prototype">
+			<property name="headService" ref="headService"/>
+			<property name="pageService" ref="pageService"/>
+		</bean>
+		<!-- scope注意默认为单例模式 sington-->
+		<bean id="loginAction" class="com.eshop.action.LoginAction" scope="prototype">
+			<property name="userService" ref="userService"/>
+			<property name="pageService" ref="pageService"/>
+		</bean>
+		<bean id="loginJsonAction" class="com.eshop.action.LoginJsonAction" scope="prototype">
+			<property name="userService" ref="userService"/>
+		</bean>
+		<bean id="cartAction" class="com.eshop.action.CartAction" scope="prototype">
+			<property name="headService" ref="headService"/>
+		</bean>
+		<bean id="cartJsonAction" class="com.eshop.action.CartJsonAction" scope="prototype">
+			<property name="headService" ref="headService"/>
+		</bean>
+		<bean id="evaluateJsonAction" class="com.eshop.action.EvaluateJsonAction" scope="prototype">
+			<property name="headService" ref="headService"/>
+		</bean>
+		<bean id="evalAction" class="com.eshop.action.EvaluateAction" scope="prototype">
+			<property name="headService" ref="headService"/>
+		</bean>
+		<bean id="orderAction" class="com.eshop.action.OrderAction" scope="prototype">
+			<property name="headService" ref="headService"/>
+			<property name="pageService" ref="pageService"/>
+		</bean>
+		<bean id="adminAction" class="com.eshop.action.AdminAction" scope="prototype">
+			<property name="userService" ref="userService"/>
+		</bean>
+</beans>
